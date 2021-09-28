@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Modifier, EditorState } from 'draft-js';
+import { Modifier, EditorState, ContentBlock } from 'draft-js';
 import { getEntityRange } from 'draftjs-utils';
 import { Chip } from '@innovaccer/design-system';
 
@@ -19,6 +19,8 @@ class Mention {
 
   getMentionComponent = () => {
     const MentionComponent = ({ entityKey, children, contentState }) => {
+      console.log("aainside getMentionComponent=====> ", entityKey, children, contentState);
+
       const { value } = contentState.getEntity(entityKey).getData();
 
       if (this.renderer) {
@@ -89,6 +91,7 @@ Mention.prototype.findMentionEntities = (
   callback,
   contentState
 ) => {
+  //console.log("aainside findMentionEntities==>", contentBlock, callback, contentState)
   contentBlock.findEntityRanges(character => {
     const entityKey = character.getEntity();
     return (

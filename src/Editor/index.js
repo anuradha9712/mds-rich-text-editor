@@ -28,7 +28,7 @@ import KeyDownHandler from '../event-handler/keyDown';
 import SuggestionHandler from '../event-handler/suggestions';
 import blockStyleFn from '../utils/BlockStyle';
 import { mergeRecursive } from '../utils/toolbar';
-import { hasProperty, filter } from '../utils/common';
+import { hasProperty, filter, debounce } from '../utils/common';
 import { handlePastedText } from '../utils/handlePaste';
 import Controls from '../controls';
 import getLinkDecorator from '../decorators/Link';
@@ -65,8 +65,10 @@ class Editor extends Component {
     this.editorProps = this.filterEditorProps(props);
     this.customStyleMap = this.getStyleMap(props);
     this.compositeDecorator = this.getCompositeDecorator(toolbar);
+    console.log("this.compositeDecorator-> ", this.compositeDecorator)
     const editorState = this.createEditorState(this.compositeDecorator);
     extractInlineStyle(editorState);
+    console.log("editorState--> ", editorState);
 
     this.state = {
       editorState,
@@ -250,6 +252,7 @@ class Editor extends Component {
           getSuggestions: this.getSuggestions,
           getWrapperRef: this.getWrapperRef,
           modalHandler: this.modalHandler,
+          parentRef: ''
         })
       );
     }
@@ -276,7 +279,7 @@ class Editor extends Component {
       if (onContentStateChange) {
         onContentStateChange(convertToRaw(editorState.getCurrentContent()));
       }
-    });
+    }, 5000);
   };
 
   isReadOnly = () => this.props.readOnly;
@@ -537,6 +540,7 @@ class Editor extends Component {
             ref={this.setEditorReference}
             keyBindingFn={this.keyBindingFn}
             editorState={editorState}
+            // onChange={debounce(this.onChange)}
             onChange={this.onChange}
             blockStyleFn={blockStyleFn}
             customStyleMap={this.getStyleMap(this.props)}

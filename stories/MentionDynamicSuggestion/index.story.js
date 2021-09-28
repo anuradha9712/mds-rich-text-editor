@@ -17,11 +17,18 @@ export const All = (args) => {
   ];
 
   const fetchSuggestions = (searchTerm) => {
+    console.log("aasearchterm--> ", searchTerm);
     const searchedOptions = searchTerm ? searchElement(suggestionList, searchTerm, false) : suggestionList;
     const result = new Promise(resolve => {
       window.setTimeout(() => {
-        resolve(searchedOptions);
-      }, 1000);
+        //resolve(searchedOptions);
+        resolve({
+          searchTerm,
+          options: searchedOptions,
+          count: searchedOptions.length,
+        });
+
+      }, 3000);
     });
     return result;
   };

@@ -80,3 +80,12 @@ export function searchElement(searchList, searchText, isCaseSensitive) {
   });
   return result;
 }
+
+export function debounce(func, delay = 2000) {
+  console.log("inside debounce-->")
+  let timerId;
+  return function () {
+    clearTimeout(timerId)
+    timerId = setTimeout(() => func.apply(this, arguments), delay)
+  };
+};

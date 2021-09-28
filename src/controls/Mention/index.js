@@ -36,10 +36,12 @@ class Mention extends Component {
 
   addLink = () => {
     const { editorState, onChange, mention } = this.props;
-    const { trigger = '@' } = mention;
+    // const { trigger = '@test' } = mention;
+    const trigger = '@test';
     const { currentEntity } = this.state;
     let selection = editorState.getSelection();
 
+    console.log("addLink called", currentEntity);
     if (currentEntity) {
       const entityRange = getEntityRange(editorState, currentEntity);
       const isBackward = selection.getIsBackward();
@@ -55,6 +57,7 @@ class Mention extends Component {
         });
       }
     }
+
 
     let contentState = Modifier.replaceText(
       editorState.getCurrentContent(),
@@ -82,6 +85,7 @@ class Mention extends Component {
 
     return (
       <Tooltip tooltip={title}>
+        <h1>my mention</h1>
         <Option
           value="unordered-list-item"
           onClick={this.addLink}
