@@ -4,6 +4,8 @@ import { getSelectedBlocksType } from 'draftjs-utils';
 import { RichUtils } from 'draft-js';
 
 import LayoutComponent from './Component';
+import { Icon, Dropdown } from '@innovaccer/design-system';
+
 
 class Heading extends Component {
   static propTypes = {
@@ -53,10 +55,10 @@ class Heading extends Component {
 
   blocksTypes = [
     //{ label: 'Normal', style: 'unstyled' },
-    { label: 'H1', style: 'header-one' },
-    { label: 'H2', style: 'header-two' },
-    { label: 'H3', style: 'header-three' },
-    { label: 'H4', style: 'header-four' },
+    { label: 'H1', style: 'header-one', value: 'H1' },
+    { label: 'H2', style: 'header-two', value: 'H2' },
+    { label: 'H3', style: 'header-three', value: 'H3' },
+    { label: 'H4', style: 'header-four', value: 'H4' },
   ];
 
   doExpand = () => {
@@ -89,16 +91,19 @@ class Heading extends Component {
     );
 
     return (
-      <LayoutComponent
-        config={config}
-        currentState={{ blockType: blockType && blockType.label }}
-        onChange={this.toggleBlockType}
-        expanded={expanded}
-        onExpandEvent={this.onExpandEvent}
-        doExpand={this.doExpand}
-        doCollapse={this.doCollapse}
-        className={className}
-      />
+      // <LayoutComponent
+      //   config={config}
+      //   currentState={{ blockType: blockType && blockType.label }}
+      //   onChange={this.toggleBlockType}
+      //   expanded={expanded}
+      //   onExpandEvent={this.onExpandEvent}
+      //   doExpand={this.doExpand}
+      //   doCollapse={this.doCollapse}
+      //   className={className}
+      // />
+
+      <Dropdown align="right" icon={config.icon} placeholder="  " className={className} onChange={this.toggleBlockType} options={this.blocksTypes} />
+
     );
   }
 }

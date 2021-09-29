@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, DropdownOption } from '../../../components/Dropdown';
-import { Icon, Heading } from '@innovaccer/design-system';
+// import { Dropdown, DropdownOption } from '../../../components/Dropdown';
+import { Icon, Heading, Dropdown } from '@innovaccer/design-system';
 
 class LayoutComponent extends Component {
   static propTypes = {
@@ -59,7 +59,8 @@ class LayoutComponent extends Component {
 
     return (
       <div className={className} aria-label="Editor-block-control">
-        <Dropdown
+
+        {/* <Dropdown
           onChange={onChange}
           expanded={expanded}
           doExpand={doExpand}
@@ -83,7 +84,9 @@ class LayoutComponent extends Component {
               </Heading>
             </DropdownOption>
           ))}
-        </Dropdown>
+        </Dropdown> */}
+
+        <Dropdown align="right" className="mr-5"  options={[{ label: 'Edit', value: 'edit' }, { label: 'Export', value: 'export' }, { label: 'Delete', value: 'delete' }]} />
       </div>
     );
   }
