@@ -15,6 +15,7 @@ export const All = (args) => {
 
   const onClick = () => {
     setHTML(Editor.utils.stateToHTML(editorState));
+    console.log('html ', Editor.utils.stateToHTML(editorState))
   };
 
   return (

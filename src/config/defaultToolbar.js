@@ -56,7 +56,7 @@ export default {
       icon: 'insert_photo',
       isVisible: true,
       title: 'Image',
-      alt: '',
+      alt: 'image',
       defaultSize: {
         height: '100px',
         width: '300px',

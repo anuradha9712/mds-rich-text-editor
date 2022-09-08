@@ -15,15 +15,15 @@ export const htmlToState = (html) => {
 
 export const stateToHTML = (editorState) => {
   const json = convertToRaw(editorState.getCurrentContent());
-
-  return draftToHtml(json, {}, false, ({ type, data }) => {
-    if (type === 'IMAGE') {
-      const alignment = data.alignment ? data.alignment : 'left';
-      return `
-        <p style="justify-content:${alignment}; display:flex">
-          <img src="${data.src}" alt="${data.alt}" style="height: ${data.height};width: ${data.width}"/>
-        </p>
-      `;
-    }
-  });
+  return draftToHtml(json);
+  // return draftToHtml(json, {}, false, ({ type, data }) => {
+  //   if (type === 'IMAGE') {
+  //     const alignment = data.alignment ? data.alignment : 'left';
+  //     return `
+  //       <p style="justify-content:${alignment}; display:flex; float:${alignment}">
+  //         <img src="${data.src}" alt="${data.alt}" style="height: ${data.height};width: ${data.width}"/>
+  //       </p>
+  //     `;
+  //   }
+  // });
 };

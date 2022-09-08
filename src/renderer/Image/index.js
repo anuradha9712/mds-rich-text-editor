@@ -86,6 +86,8 @@ const getImageComponent = (config) =>
       const { isImageAlignmentEnabled } = config;
       const entity = contentState.getEntity(block.getEntityAt(0));
       const { src, alignment, height, width, alt } = entity.getData();
+      console.log('this.propsthis.props', this.props);
+      console.log('config config', config, 'alignment', alignment, 'entity', entity);
 
       const wrapperClass = classNames({
         'd-flex': true,

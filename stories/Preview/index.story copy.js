@@ -7,7 +7,7 @@ export const All = (args) => {
   // import { Editor, EditorPreview } from '@innovaccer/rich-text-editor';
 
   const [editorState, setEditorState] = React.useState(Editor.utils.EditorState.createEmpty());
-  const [html, setHTML] = React.useState();
+  const [raw, setRaw] = React.useState();
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState);
@@ -15,12 +15,7 @@ export const All = (args) => {
 
   const onClick = () => {
     const raw = Editor.utils.convertToRaw(editorState.getCurrentContent());
-    const entities = {
-      MENTION: (children, entity, { key }) => <div key={key}>{entity.value}</div>,
-    };
-    const html = EditorPreview.utils.convertToHTML(raw, true, { entities });
-    setHTML(html);
-    console.log('preview html-> ', html);
+    setRaw(raw);
   };
 
   return (
@@ -32,18 +27,20 @@ export const All = (args) => {
         onEditorStateChange={onEditorStateChange}
         mention={{
           suggestions: [
-            { label: 'First Name', value: 'Innovaccer' },
-            { label: 'Last Name', value: 'Analytics' },
-            { label: 'PCP', value: '112' },
-            { label: 'Address', value: 'Test Address' },
-            { label: 'DOB', value: '11-02-1998' },
+            { label: 'First Name', value: 'First Name' },
+            { label: 'Last Name', value: 'Last Name' },
+            { label: 'PCP', value: 'PCP' },
+            { label: 'Address', value: 'Address' },
+            { label: 'DOB', value: 'DOB' },
           ],
         }}
       />
       <Button appearance="primary" size="large" onClick={onClick} className="my-4">
-        Get Preview HTML
+        Get Preview
       </Button>
-      <div>{html}</div>
+      <div className="pl-7">
+        <EditorPreview {...args} raw={raw} />
+      </div>
     </div>
   );
 };
@@ -54,7 +51,7 @@ All.argTypes = {
 };
 
 export default {
-  title: 'Library/Preview - toHTML',
+  title: 'Library/Preview',
   component: EditorPreview,
   parameters: {
     docs: {

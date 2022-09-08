@@ -88,11 +88,12 @@ const defaultEntities = {
     </Link>
   ),
   IMAGE: (children, props) => {
+    // console.log('image propss', children, props, 'entity', entity);
     const { src, alt, height, width, alignment } = props;
     const imageAlign = alignment ? alignment : 'left';
 
     return (
-      <p style={{ justifyContent: imageAlign, display: 'flex' }}>
+      <p id='RichTextEditor-Image' style={{ justifyContent: imageAlign, display: 'flex' }}>
         <img src={src} alt={alt} height={height} width={width} />
       </p>
     );
@@ -146,6 +147,7 @@ const getPreviewComponent = (raw, { entities = {}, headings = {}, list = {}, col
   const blocks = { ...defaultBlocks, ...updatedHeadings, ...updatedList };
   const styles = { ...styleMap, ...getColors(colors) };
 
+  console.log('rawwwww-> ', raw);
   const renderer = {
     blocks,
     entities: updatedEntities,

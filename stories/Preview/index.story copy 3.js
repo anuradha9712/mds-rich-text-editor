@@ -3,7 +3,7 @@ import React from 'react';
 // import '@innovaccer/rich-text-editor/dist/rich-text-editor.css';
 import { Editor, EditorPreview } from '../../src';
 
-export const All = ({ onChangeMessage, }) => {
+export const All =({ onChangeMessage, }) => {
     const [content, setContent] = React.useState(Editor.utils.EditorState.createEmpty());
     const [toggleEditor, setToggleEditor] = React.useState(true);
     const [htmlContent, setHtml] = React.useState('')
@@ -42,7 +42,7 @@ export const All = ({ onChangeMessage, }) => {
         toolbar={{
             insert: {
             image: {
-                // defaultSize: { height: 'auto', width: 'auto' },
+                defaultSize: { height: 'auto', width: 'auto' },
             }
         }
         }}

@@ -65,7 +65,8 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "draft-js": "^0.11.7",
-    "draftjs-to-html": "^0.9.1",
+    "draft-js-import-html": "^1.4.1",
+    "draftjs-to-html": "../draftjs-to-html",
     "draftjs-utils": "^0.10.2",
     "html-to-draftjs": "^1.5.0",
     "immutable": "^4.0.0-rc.12",
